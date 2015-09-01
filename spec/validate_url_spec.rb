@@ -217,6 +217,17 @@ describe "URL validation" do
     end
   end
 
+  context "with mailto scheme" do
+    before do
+      @user = UserWithMailtoScheme.new
+    end
+
+    it "should allow mailto url" do
+      @user.homepage = "mailto:jane@example.com"
+      @user.should be_valid
+    end
+  end
+
   context "with regular validator and custom scheme" do
     before do
       @user = UserWithCustomScheme.new
